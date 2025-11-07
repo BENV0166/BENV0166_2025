@@ -115,6 +115,7 @@ def randomSampling (parameters, n):
     random_values = []
 
     # Iterate through each variable and append an array of length n, to the list
+    # Depending on the 'type' a different random function will be used
     for k, v in parameters.items():
 
         if v["type"] in ["discrete", "categorical", "bool", bool]:
@@ -127,8 +128,9 @@ def randomSampling (parameters, n):
         elif v["type"] in [int, "int"]:
             # Perform an error check if only one value was given. Assume it is like a constant value.
             if len (v["values"]) == 1:
-                 random_values.append ([v["values"][0]] * n)   
-            else:
+                 random_values.append ([v["values"][0]] * n)  
+            # Ensure the given values are in the correct order
+            else: 
                 min_value = min(v["values"])
                 max_value = max(v["values"])
 
@@ -152,13 +154,14 @@ def randomSampling (parameters, n):
                     n
                 ))
         else:
-            raise Exception (f"Unsupported input type for latin hypercube sampling: {v['type']}")
+            raise Exception (f"Unsupported input type for random sampling: {v['type']}")
 
     # Convert the list of lists into a dataframe. The transpose function is required to orient them correctly.
     random_values = pd.DataFrame(random_values).T
     random_values.columns = parameters.keys()
 
     return random_values
+
 
 def fullFactorialSampling(parameters):
     """ 
