@@ -32,7 +32,7 @@ def run_energyPlus (ep_dir, baseline_idf_path, weather_file_path, inputs, i):
     # Prepare the EnergyPlus command for Windows (NT) or Mac/Linux (Posix)
     if os.name == "nt": # Command for Windows users
         ep_path = Path (ep_dir, "energyplus.exe")
-        ep_cmd = f"{ep_path} {new_idf_path} -w {weather_file_path} -d {output_path}"
+        ep_cmd = f'"{ep_path}" {new_idf_path} -w {weather_file_path} -d {output_path}'
 
     elif os.name == "posix": # Generate command for Mac/Linux Users
         ep_path = Path (ep_dir, "energyplus")
