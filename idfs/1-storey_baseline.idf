@@ -812,7 +812,7 @@ Material,
 Material,
     Slab Insulation,         !- Name
     MediumRough,             !- Roughness
-    0.05,                    !- Thickness {m}
+    @slabInsulationThickness@,!- Thickness {m}
     0.05,                    !- Conductivity {W/m-K}
     154,                     !- Density {kg/m3}
     940,                     !- Specific Heat {J/kg-K}
@@ -823,7 +823,7 @@ Material,
 Material,
     Wall Insulation,         !- Name
     MediumRough,             !- Roughness
-    0.05,                    !- Thickness {m}
+    @wallInsulationThickness@,  !- Thickness {m}
     0.05,                    !- Conductivity {W/m-K}
     154,                     !- Density {kg/m3}
     940,                     !- Specific Heat {J/kg-K}
@@ -845,7 +845,7 @@ Material,
 Material,
     Roof Insulation,         !- Name
     MediumRough,             !- Roughness
-    0.05,                    !- Thickness {m}
+    @roofInsulationThickness@,  !- Thickness {m}
     0.05,                    !- Conductivity {W/m-K}
     154,                     !- Density {kg/m3}
     940,                     !- Specific Heat {J/kg-K}
@@ -861,7 +861,7 @@ Material,
     1900,                    !- Density {kg/m3}
     800,                     !- Specific Heat {J/kg-K}
     0.9,                     !- Thermal Absorptance
-    0.7,                     !- Solar Absorptance
+    @roofAbsorptance@,                     !- Solar Absorptance
     0.7;                     !- Visible Absorptance
 
 Material,
@@ -902,8 +902,8 @@ Material,
 
 WindowMaterial:SimpleGlazingSystem,
     Window,                  !- Name
-    2.0,                     !- U-Factor {W/m2-K}
-    0.7,                     !- Solar Heat Gain Coefficient
+    @u_windows@,             !- U-Factor {W/m2-K}
+    @g_value@,               !- Solar Heat Gain    
     0.7;                     !- Visible Transmittance
 
 
